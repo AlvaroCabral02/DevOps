@@ -6,6 +6,6 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/teste")
+@app.get("/teste1")
 async def root():
     return {"teste": true, "num_aleatorio": random.randint(1, 1000)}
