@@ -1,0 +1,20 @@
+name: teste CD
+on:
+  push:
+    branches:
+      - main # branch que sera utilizada para executar o trabbalho
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+
+      - name: Simualacao de Continuos delivery
+        uses: actions/upload-artifact@v4
+        with:
+          name: proejtozip.zip
+          path: |
+            '**.py'
+            readme.md
