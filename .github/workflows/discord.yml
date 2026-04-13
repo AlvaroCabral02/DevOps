@@ -1,6 +1,6 @@
 name: discord
 on:
-  -push
+  push
 
 permissions:
   contents: read
