@@ -1,18 +1,18 @@
-name: discord
-on:
-  -push
+name: Discord Alert
 
-permissions:
-  contents: read
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
-  discord:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run Discord Webhook
-        uses: Sniddl/discord-commits@v1.8
+      - name: Discord notification
+        uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          template: "avatar-with-link"
-          include-extras: true
+          status: ${{ job.status }}
+          content: "Opa! O teste do projeto DevOps foi finalizado."
+          title: "Resultado do GitHub Actions"
